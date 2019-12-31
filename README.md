@@ -71,11 +71,12 @@ There is a bit of work to be done on your part to finalize the boilerplate.
 Create a favicon, and use [this site]( https://www.favicon-generator.org/) to generate your favicon set. 
 Extract this set into `app/web/site/static/img`
 
-## ToDo
+## Todo
 * Add Role support (partially there)
 * Finish pagination component
 * Finish adding `Log` DB events around `APIToken` DB model
 * Looking for ideas on what others may need (see below)
+* Create pyTest tests
 
 ## Contributing
 Feel free to fork the repo, make changes, and open pull-requests. I am the first to admit, I 
