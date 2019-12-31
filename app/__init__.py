@@ -19,7 +19,7 @@ def configure_app(flask_app, config_name):
 
 
 def initialize_app(flask_app):
-    logger.debug('Initializing HRS...')
+    logger.debug('Initializing Flask Application...')
     db.init_app(flask_app)
     login_manager.init_app(flask_app)
     Migrate(flask_app, db)
