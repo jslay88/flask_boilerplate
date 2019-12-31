@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  <div id="firstRunVue"></div>
+
+{% block script %}
+{{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js" integrity="sha256-cVdRFpfbdE04SloqhkavI/PJBWCr+TuyQP3WkLKaiYo=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/vue-components/firstRun/create-account.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vue-apps/firstRunVue.js') }}"></script>
+{% endblock %}
+</body>
+{% endblock %}
