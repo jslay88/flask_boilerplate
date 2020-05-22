@@ -3,7 +3,7 @@ This project serves as a structured project boilerplate for Flask driven project
 This boilerplate utilizes [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/), 
 [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/), 
 [Flask-Login](https://flask-login.readthedocs.io/en/latest/), 
-[Flask-RESTPlus](https://flask-restplus.readthedocs.io/en/stable/), 
+[Flask-RESTX](https://flask-restx.readthedocs.io/en/latest/), 
 and [Flask-Script](https://flask-script.readthedocs.io/en/latest/). 
 This project is built to be modular, so adapting it to your project should take little to no effort.
 
