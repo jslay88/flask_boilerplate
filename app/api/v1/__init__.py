@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask_restplus import Api, apidoc
+from flask_restx import Api, apidoc
 from flask_login import login_required
 
 from sqlalchemy.orm.exc import NoResultFound

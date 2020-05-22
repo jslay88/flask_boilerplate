@@ -1,0 +1,38 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:
+    build: .
+    image: flask_boilerplate
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    volumes:
+      - ./app:/app/app
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_ENV=development
+      - CONFIG=development
+    entrypoint: ["flask", "run", "--host", "0.0.0.0"]
+  migrations:
+    build: .
+    image: flask_boilerplate
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    volumes:
+      - ./migrations:/app/migrations
+    environment:
+      - BUILD_MIGRATIONS=true
+    entrypoint: ["./migrate"]
+volumes:
+  postgres_data:

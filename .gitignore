@@ -125,4 +125,3 @@ dmypy.json
 
 db.db
 .idea/
-migrations/

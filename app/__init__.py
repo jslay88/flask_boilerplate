@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 
 from .database import db
 from .login import login_manager
-from .config import app_config
+from .config import app_config, ProductionConfig
 
 
 logger = logging.getLogger(__name__)
@@ -51,7 +51,7 @@ def initialize_app(flask_app):
             return r
 
 
-def create_app(config_name='production'):
+def create_app(config_name=ProductionConfig.CONFIG_NAME):
     logger.debug(f'Creating Application with config: {config_name}')
     app = Flask(__name__)
     configure_app(app, config_name)

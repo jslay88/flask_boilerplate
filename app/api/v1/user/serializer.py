@@ -1,5 +1,5 @@
 from . import ns as api
-from flask_restplus import fields
+from flask_restx import fields
 
 
 pagination = api.model('Pagination Options', {

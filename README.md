@@ -12,7 +12,7 @@ This project is built to be modular, so adapting it to your project should take 
 * DB Management ([Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/))
 * User Login ([Flask-Login](https://flask-login.readthedocs.io/en/latest/))
 * API Tokens ([Flask-Login](https://flask-login.readthedocs.io/en/latest/), with custom methods)
-* RESTful API ([Flask-RESTPlus](https://flask-restplus.readthedocs.io/en/stable/))
+* RESTful API ([Flask-RESTX](https://flask-restx.readthedocs.io/en/latest/))
 * Modular Structure for Database Models, Front End, and multi-version API backends.
 * Starter VueJS and Bootstrap 4 front end template 
 (I digress, not the best JS developer, and this should probably be built and served with NodeJS)
@@ -50,17 +50,20 @@ Here are a few key pieces to the structure
 * `app/login/manager.py` - Login manager, methods for handling loading a user/API token
 * `app/web/views.py` - Handles the single pane, login, and logout views
 * `Dockerfile` - Prebuilt Dockerfile for dockerization of your app
+* `docker-compose.yml` - Production type docker-compose file
+* `docker-compose.dev.yml` - Local development docker-compose file
 
 Now that you have an idea how this is structured, lets fire it up and make sure it works.
-Create the sqlite db, and initialize it using the `manage.py` script.
+Create the sqlite db, and initialize it using the `manage.py` script, and run the application.
 
-    python manage.py -c development db init
-    python manage.py -c development db migrate
+**Local environment without Docker**
+
     python manage.py -c development db upgrade
-    
-Now run the application.
-
     CONFIG=development python run.py
+    
+**Local environment with Docker**
+
+    docker-compose -f docker-compose.dev.yml up  # Local environment with Docker
     
 Access the page at `127.0.0.1:5000`, create a user and test the page out.
 
@@ -71,7 +74,24 @@ There is a bit of work to be done on your part to finalize the boilerplate.
 Create a favicon, and use [this site]( https://www.favicon-generator.org/) to generate your favicon set. 
 Extract this set into `app/web/site/static/img`
 
-## Todo
+## Database Model Migrations
+
+To build migrations after you have made adjustments to any models within `app.database`
+
+    python manage.py db migrate
+
+To apply those migrations to your test database after verifying the new `.py` in `versions` is correct
+
+    python manage.py db upgrade
+    
+## Docker and Docker Compose
+
+There is a prebuilt `Dockerfile` and two docker-compose files (`docker-compose.yml` and 
+`docker-compose.dev.yml`). `docker-compose.dev.yml` can be used to easily fire up a development 
+environment within docker that mounts the local directories for ease of development. Whereas 
+`docker-compose.yml` is the standard structure for a production type environment. 
+
+## Project Wish List
 * Add Role support (partially there)
 * Finish pagination component
 * Finish adding `Log` DB events around `APIToken` DB model

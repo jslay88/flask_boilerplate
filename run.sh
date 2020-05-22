@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-venv/bin/uwsgi --http :5000 --wsgi-disable-file-wrapper --manage-script-name --mount /=run:app
+./migrate
+uwsgi --http :5000 --wsgi-disable-file-wrapper --manage-script-name --mount /=run:app

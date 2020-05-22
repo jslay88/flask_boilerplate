@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:
+    build: .
+    image: flask_boilerplate
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    ports:
+      - 80:5000
+volumes:
+  postgres_data:
+  migrations:

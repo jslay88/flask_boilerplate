@@ -1,0 +1,9 @@
+# Database Model Migrations
+
+To build migrations after you have made adjustments to any models within `app.database`
+
+    python manage.py db migrate
+
+To apply those migrations to your test database after verifying the new `.py` in `versions` is correct
+
+    python manage.py db upgrade
